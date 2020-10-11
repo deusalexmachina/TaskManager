@@ -13,15 +13,18 @@ from flask_restx import Resource, Api
 
 
 app = Flask(__name__)                  # Create a Flask WSGI application
-api = Api(app)                         # Create a Flask-RESTPlus API
+api = Api(app)                          # Create a Flask-RESTPlus API
 
 
+''' HELLO '''
 @api.route('/hello')                   # Create a URL route to this resource
 class HelloWorld(Resource):            # Create a RESTful resource
 	def get(self):                     # Create GET endpoint
 		return {'hello':'world'}
 
-
+'''
+CREATE NEW TASK
+'''
 @api.route('/task/create', methods=['GET', 'POST'])
 class CreateTask(Resource):
 	def get(self):
