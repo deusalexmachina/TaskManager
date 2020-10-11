@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-
+from . import db, auth
 
 def create_app(test_config=None):
     # create and configure the app
@@ -24,7 +24,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import db
+    # register DB
     db.init_app(app)
+
+    # register auth blueprint
+    app.register_blueprint(auth.bp)
 
     return app
